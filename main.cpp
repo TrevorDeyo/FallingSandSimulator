@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
 				gameIsRunning = false;
 			}
 			if (event.type == SDL_MOUSEBUTTONDOWN) {
-				std::cout << "mouse has been clicked" << '\n';
+				std::cout << "mouse has been clicked test" << '\n';
 			}
 		}
 	}
