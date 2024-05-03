@@ -13,6 +13,7 @@ int main(int argc, char* argv[]) {
 		std::cout << "SDL video system is ready to go\n";
 	}
 
+	// Grab the users display resolution
 	SDL_DisplayMode current;
 	SDL_GetCurrentDisplayMode(0, &current);
 	auto Width = current.w;
@@ -24,7 +25,7 @@ int main(int argc, char* argv[]) {
 		SDL_WINDOWPOS_CENTERED,		// the x position of the window 
 		SDL_WINDOWPOS_CENTERED,		// the y position of the window
 		Width - 100,				// width, in pixels
-		Height - 100,				// height, in pixels (-50 for windows taskbar)
+		Height - 100,				// height, in pixels
 		SDL_WINDOW_SHOWN);			// flag
 
 	// Check that the window was successfully created
