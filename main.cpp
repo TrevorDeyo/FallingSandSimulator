@@ -38,10 +38,12 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 
-
-
-
 	bool running = true;
+	int mouseX;
+	int mouseY;
+
+
+
 	while (running)
 	{
 		SDL_Event event;
@@ -60,6 +62,12 @@ int main(int argc, char* argv[]) {
 			{
 				std::cout << "mouse button up\n";
 			}
+			else if (event.type == SDL_MOUSEMOTION)
+			{
+				SDL_GetMouseState(&mouseX, &mouseY);
+				std::cout << "mouse x: " << mouseX << " mouse y: " << mouseY << '\n';
+			}
+			else if (event.type == SDL)
 		}
 
 
