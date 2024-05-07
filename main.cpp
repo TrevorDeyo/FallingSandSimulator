@@ -1,5 +1,5 @@
 // C++ Standard Libraries
-#include <iostream>
+#include <print>
 
 // Third-Party library
 #include <SDL.h>
@@ -9,10 +9,10 @@ int main(int argc, char* argv[]) {
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)		// Initialize SDL2 & Check if succesful
 	{
-		std::cout << "SDL could not be initialized: " << SDL_GetError();
+		std::print("SDL could not be initialized: {0}", SDL_GetError());
 	}
 	else {
-		std::cout << "SDL video system is ready to go\n";
+		std::print("SDL video system is ready to go\n");
 	}
 
 	// Grab the users display resolution
@@ -34,14 +34,14 @@ int main(int argc, char* argv[]) {
 	if (window == NULL)
 	{
 		// In the case that the window could not be made...
-		std::cout << "Could not create window: " << SDL_GetError;
+		std::print("Could not create window: {0}", SDL_GetError());
 		return 1;
 	}
 
 	bool running = true;
+	bool mouseDown = false;
 	int mouseX;
 	int mouseY;
-
 
 
 	while (running)
@@ -50,26 +50,30 @@ int main(int argc, char* argv[]) {
 		// Start the event loop
 		while (SDL_PollEvent(&event))
 		{
-			if (event.type == SDL_QUIT)
-			{
-				running = false;
-			}
-			else if (event.type == SDL_MOUSEBUTTONDOWN)
-			{
-				std::cout << "mouse button down\n";
-			}
-			else if (event.type == SDL_MOUSEBUTTONUP)
-			{
-				std::cout << "mouse button up\n";
-			}
-			else if (event.type == SDL_MOUSEMOTION)
-			{
+			switch (event.type) {
+			case SDL_MOUSEBUTTONDOWN:
+				mouseDown = true;
+				std::print("mouse button down\n");
+				break;
+			case SDL_MOUSEBUTTONUP:
+				mouseDown = false;
+				std::print("mouse button up\n");
+				break;
+			case SDL_MOUSEMOTION:
 				SDL_GetMouseState(&mouseX, &mouseY);
-				std::cout << "mouse x: " << mouseX << " mouse y: " << mouseY << '\n';
+				std::print("mouse x: {0} mouse y: {1}\n", mouseX, mouseY);
+				if (mouseDown) {
+					std::print("mouse down and moving\n");
+				}
+				break;
+			case SDL_QUIT:
+				running = false;
+				break;
+			default:
+				break;
 			}
-			else if (event.type == SDL)
-		}
 
+		}
 
 	}
 
