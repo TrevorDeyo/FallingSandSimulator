@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)		// Initialize SDL2 & Check if succesful
 	{
 		std::cout << "SDL could not be initialized: " << SDL_GetError();
-	} 
+	}
 	else {
 		std::cout << "SDL video system is ready to go\n";
 	}
@@ -23,11 +23,11 @@ int main(int argc, char* argv[]) {
 
 	// Create an application window with the following setttings:
 	window = SDL_CreateWindow(
-		"Falling Sand Simulator",   // window title
-		SDL_WINDOWPOS_CENTERED,		// the x position of the window 
-		SDL_WINDOWPOS_CENTERED,		// the y position of the window
-		Width,						// width, in pixels
-		Height,						// height, in pixels
+		"Falling Sand Simulator",			// window title
+		SDL_WINDOWPOS_CENTERED,				// the x position of the window 
+		SDL_WINDOWPOS_CENTERED,				// the y position of the window
+		Width,								// width, in pixels
+		Height,								// height, in pixels
 		SDL_WINDOW_FULLSCREEN_DESKTOP);		// flag
 
 	// Check that the window was successfully created
@@ -37,6 +37,9 @@ int main(int argc, char* argv[]) {
 		std::cout << "Could not create window: " << SDL_GetError;
 		return 1;
 	}
+
+
+
 
 	bool running = true;
 	while (running)
@@ -58,6 +61,8 @@ int main(int argc, char* argv[]) {
 				std::cout << "mouse button up\n";
 			}
 		}
+
+
 	}
 
 	SDL_DestroyWindow(window);
